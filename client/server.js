@@ -65,6 +65,9 @@ const sendNotification = (user_id, notification) => {
 
 // API to send a notification
 app.post('/sendNotification', express.json(), (req, res) => {
+
+  console.log("Push Initialized");
+  console.log(`The web noti is : ${req.body}`);
   const { user_id, message, _id } = req.body;
   if (!user_id || !message || !_id) {
     return res.status(400).json({ error: 'Missing required fields' });
