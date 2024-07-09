@@ -4,12 +4,8 @@ const axios = require('axios');
 const SendPushNotification = async (msg) => {
   try{ 
     console.log("trying to send push notification");
-    console.log(msg);
-    // data = {
-    //   _id : msg._id,
-    //   user_id: msg.user_id,
-    //   message: msg.message
-    // }
+    console.log(JSON.stringify(msg));
+
 
     await axios.post(`http://20.244.93.34:3000/sendNotification`, msg, {
       headers: {
