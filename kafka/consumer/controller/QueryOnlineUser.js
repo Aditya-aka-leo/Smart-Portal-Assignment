@@ -39,10 +39,6 @@ const QueryOnlineUser = async (msg) => {
           );
         }
       }
-      const updateResult = await Notification.updateMany(
-        { user_id: msg.user_id, read: false },
-        { $set: { read: true } }
-      );
       console.log(
         `Updated read status for ${updateResult.modifiedCount} documents.`
       );

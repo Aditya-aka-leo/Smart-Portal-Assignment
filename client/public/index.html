@@ -17,6 +17,12 @@
         border-bottom: 1px solid #ccc;
         padding: 5px;
         margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .notification button {
+        margin-left: 10px;
       }
     </style>
   </head>
@@ -42,7 +48,31 @@
           const notificationBox = document.getElementById("notificationBox");
           const notification = document.createElement("div");
           notification.classList.add("notification");
-          notification.innerText = event.data;
+
+          const message = document.createElement("span");
+          message.innerText = event.data;
+
+          const button = document.createElement("button");
+          button.innerText = "Acknowledge";
+          button.onclick = () => {
+            fetch(`http://20.244.93.34:8081/register/${event.data}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log("Notification acknowledged:", data);
+              notificationBox.removeChild(notification);
+            })
+            .catch(error => {
+              console.error("Error acknowledging notification:", error);
+            });
+          };
+
+          notification.appendChild(message);
+          notification.appendChild(button);
           notificationBox.appendChild(notification);
           console.log("Notification received:", event.data);
         };
