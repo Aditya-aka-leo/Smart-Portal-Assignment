@@ -9,6 +9,7 @@ const kafka = new Kafka({
 const topicConfigurations = [
   { topic: "Push-Notification", numPartitions: 1 },
   { topic: "Notify-Online-Users", numPartitions: 1 },
+  { topic: "Replay-Failed-Notification", numPartitions: 1 },
 ];
 
 const createTopics = async (admin) => {

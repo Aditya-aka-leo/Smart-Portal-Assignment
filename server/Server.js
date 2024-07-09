@@ -1,17 +1,17 @@
 const cors = require("cors");
 const express = require("express");
-const main_route = require("./src/routes/Main");
-const swaggerUi = require('swagger-ui-express');
-const swaggerSpecs = require('./src/utils/swagger/Swagger');
-// const msg_back_replayer = require('./src/workers/msg_back_replayer');
+const MainRoute = require("./src/routes/Main");
+const SwaggerUi = require('swagger-ui-express');
+const SwaggerSpecs = require('./src/utils/swagger/Swagger');
+const ReplaySystemWorker = require('./src/workers/ReplaySystemWorker');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/", main_route);
+app.use("/", MainRoute);
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+app.use('/api-docs', SwaggerUi.serve, SwaggerUi.setup(SwaggerSpecs));
 
 app.get("*", (req, res) => {
   res.status(404).send("<h1>404 Not Found</h1>");
@@ -23,6 +23,6 @@ app.listen(PORT , () => {
   console.log(`App started on :${PORT}`);
 
   require("./src/utils/mongo/MongoClient").connectDB();
+  ReplaySystemWorker();
 
-  // msg_back_replayer();
 });
