@@ -98,7 +98,7 @@
  *         name: id
  *         required: true
  *         schema:
- *           type: json
+ *           type: string
  *     responses:
  *       200:
  *         description: Notification details
