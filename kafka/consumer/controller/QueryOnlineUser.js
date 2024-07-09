@@ -39,9 +39,6 @@ const QueryOnlineUser = async (msg) => {
           );
         }
       }
-      console.log(
-        `Updated read status for ${updateResult.modifiedCount} documents.`
-      );
     }
   } catch (e) {
     console.error("Error Querying Online User", e);
