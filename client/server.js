@@ -5,11 +5,10 @@ const axios = require('axios');
 
 const app = express();
 const port = 3000;
+const host = '13.235.241.174';
 
-// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Create HTTP server and attach WebSocket server to it
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
@@ -18,13 +17,11 @@ wss.on('connection', (ws, request) => {
 
   console.log(`User ${user_id} connected`);
 
-  // Notify your notification system when user is online
   notifySystem(user_id, 'online');
 
   ws.on('close', () => {
     console.log(`User ${user_id} disconnected`);
 
-    // Notify your notification system when user is offline
     notifySystem(user_id, 'offline');
   });
 
@@ -33,21 +30,18 @@ wss.on('connection', (ws, request) => {
   });
 });
 
-server.listen(port, () => {
-  console.log(`Server running at http://13.235.241.174:${port}`);
+server.listen(port, host, () => {
+  console.log(`Server running at http://${host}:${port}`);
 });
-
 
 const notifySystem = async (user_id, status) => {
   try {
-    // Construct the payload
     const payload = {
-      user_id : user_id,
-      status : status,
+      user_id: user_id,
+      status: status,
     };
 
-    // Send the POST request
-    await axios.post('http://13.235.241.174:8081/notifyOnlineUser', payload, {
+    await axios.post(`http://${host}:8081/notifyOnlineUser`, payload, {
       headers: {
         'Content-Type': 'application/json'
       }
