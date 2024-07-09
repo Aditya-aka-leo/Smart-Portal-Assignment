@@ -6,6 +6,7 @@ const SendPushNotification = async (msg) => {
     console.log("trying to send push notification");
 
     data = {
+      _id : msg._id,
       user_id: msg.user_id,
       message: msg.message
     }
@@ -22,6 +23,7 @@ const SendPushNotification = async (msg) => {
 
   }catch(err){
      try {
+      console.error("Error Sending Push Notification:", err.message);
           await produceMessage("Replay-Failed-Notification", msg);
           console.log("Pushed Into Push-Notification Queue Successfully");
         } catch (err) {
