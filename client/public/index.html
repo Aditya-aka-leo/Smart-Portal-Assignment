@@ -4,12 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Online Offline App</title>
+    <style>
+      #notificationBox {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #000;
+        overflow-y: auto;
+        padding: 10px;
+        margin-top: 20px;
+      }
+      .notification {
+        border-bottom: 1px solid #ccc;
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+    </style>
   </head>
   <body>
     <h1>Online Offline App</h1>
     <input type="text" id="userIdInput" placeholder="Enter your user ID" />
     <button id="connectButton">Connect</button>
     <div id="status"></div>
+    <div id="notificationBox"></div>
     <script>
       let socket;
 
@@ -18,8 +34,17 @@
 
         socket.onopen = () => {
           document.getElementById("status").innerText =
-            "WebSocket connection established And All The Pending Notifications Sent";
+            "WebSocket connection established and all pending notifications sent";
           console.log("WebSocket connection established");
+        };
+
+        socket.onmessage = (event) => {
+          const notificationBox = document.getElementById("notificationBox");
+          const notification = document.createElement("div");
+          notification.classList.add("notification");
+          notification.innerText = event.data;
+          notificationBox.appendChild(notification);
+          console.log("Notification received:", event.data);
         };
 
         socket.onclose = (event) => {
