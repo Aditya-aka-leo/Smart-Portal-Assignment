@@ -6,14 +6,14 @@ const QueryOnlineUser = async (msg) => {
   try {
     if (msg.status === "offline") {
       const result = await Users.findOneAndUpdate(
-        { user_id: msg.user_id },
+        { _id: msg.user_id },
         { $set: { connected: false } },
         { returnDocument: "after" }
       );
       console.log(`User ${msg.user_id} connection status updated to offline.`);
     } else {
       const result = await Users.findOneAndUpdate(
-        { user_id: msg.user_id },
+        { _id: msg.user_id },
         { $set: { connected: true } },
         { returnDocument: "after" }
       );

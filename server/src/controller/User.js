@@ -6,18 +6,17 @@ const jwt = require("jsonwebtoken");
 
 const Register = async (req, res) => {
   try {
-    const userExist = await UserSchema.findOne({ user_id: req.body.user_id });
+    const userExist = await UserSchema.findOne({ email: req.body.email });
     if (userExist) {
       return res.json("User Already Exists");
     } else {
       const newUser = await UserSchema.create({
-        user_id: req.body.user_id,
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
         connected: req.body.connected,
       });
-      return res.json("The New User Is Created Successfully");
+      return res.json({data : newUser,message: "User Created",status:200});
     }
   } catch (err) {
     console.log("Error Finding Or Creating User", err);
@@ -27,7 +26,7 @@ const Register = async (req, res) => {
 
 const Login = async (req, res) => {
   try {
-    const user = await UserSchema.findOne({ username: req.body.username });
+    const user = await UserSchema.findOne({ email: req.body.email });
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }

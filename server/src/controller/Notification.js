@@ -5,7 +5,7 @@ const CreateNotification = async (req, res) => {
   try {
     flag = false;
 
-    const user = await UserSchema.findOne({ user_id: req.body.user_id });
+    const user = await UserSchema.findOne({ _id: req.body.user_id });
     if (user["connected"] === true) flag = true;
 
     const NewNotification = await NotificationSchema.create({
@@ -64,10 +64,11 @@ const GetAllNotification = async (req, res) => {
 
 const GetNotificationDetails = async (req, res) => {
   try {
-    console.log('Getting notification details');
+    console.log("Getting notification details");
     console.log(req.params.id);
     const notification = await NotificationSchema.findById(req.params.id);
-    if (!notification) return res.status(404).json({ message: "Notification not found" });
+    if (!notification)
+      return res.status(404).json({ message: "Notification not found" });
     res.json(notification);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -81,10 +82,17 @@ const UpdateNotificationStatus = async (req, res) => {
       { read: true },
       { new: true }
     );
-    if (!notification) return res.status(404).json({ message: "Notification not found" });
+    if (!notification)
+      return res.status(404).json({ message: "Notification not found" });
     res.json(notification);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
-module.exports = { CreateNotification,NotifyOnlineUser,GetAllNotification, GetNotificationDetails , UpdateNotificationStatus};
+module.exports = {
+  CreateNotification,
+  NotifyOnlineUser,
+  GetAllNotification,
+  GetNotificationDetails,
+  UpdateNotificationStatus,
+};

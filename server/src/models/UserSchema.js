@@ -3,11 +3,6 @@ const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
 
 const Users = mongoose_user.Schema({
-  user_id: {
-    type: Number,
-    required: true,
-    unique: true,
-  },
   username: {
     type: String,
     required: true,
