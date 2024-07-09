@@ -17,7 +17,7 @@ router.post("/notifications", VerifyJwt, CreateNotification);
 router.post("/notifyOnlineUser", NotifyOnlineUser);
 router.get("/notifications", VerifyJwt, GetAllNotification);
 router.get("/notifications/:id", VerifyJwt, GetNotificationDetails);
-router.put("/notifications/:id", VerifyJwt, UpdateNotificationStatus);
+router.put("/notifications/:id", UpdateNotificationStatus);
 // router.post("/create_user", Create_User);
 // router.post("/notify", Notify_User_Prod);
 // router.post("/delete_user", Delete_User);
