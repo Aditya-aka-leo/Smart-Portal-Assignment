@@ -2,7 +2,7 @@ const mongoose_user = require("mongoose");
 
 const Notification = mongoose_user.Schema({
   user_id: {
-    type: Number,
+    type: String,
     required: true,
   },
   message: {

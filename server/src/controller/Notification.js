@@ -1,11 +1,12 @@
 const UserSchema = require("../models/UserSchema");
 const NotificationSchema = require("../models/NotificationSchema");
 const { produceMessage } = require("../utils/kafka/Producer");
+
 const CreateNotification = async (req, res) => {
   try {
     flag = false;
 
-    const user = await UserSchema.findOne({ user_id: req.body.user_id });
+    const user = await UserSchema.findOne({ _id: req.body.user_id });
     if (user["connected"] === true) flag = true;
 
     const NewNotification = await NotificationSchema.create({
@@ -16,15 +17,24 @@ const CreateNotification = async (req, res) => {
     if (flag === true) {
       try {
         await produceMessage("Push-Notification", req.body);
-        return res.json("Pushed Into Push Notification Queue Successfully");
+        return res.json({
+          data: NewNotification,
+          message: "Pushed Into Push Notification Queue Successfully",
+          status: 201,
+        });
       } catch (err) {
         console.log("Error Sending Payload To Push Notification Queue", err);
         return res.json(500).json({ error: err });
       }
-    } else res.json("Pushed Into DB As The User Is Offline");
+    } else
+      res.json({
+        data: NewNotification,
+        message: "Pushed Into DB As The User Is Offline",
+        status: 201,
+      });
   } catch (err) {
     console.log("Error Finding Or Creating Notification", err);
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.json({ error: "Internal Server Error", status: 500 });
   }
 };
 
@@ -58,19 +68,23 @@ const GetAllNotification = async (req, res) => {
       totalNotifications: total,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.json({ message: error.message, status: 500 });
   }
 };
 
 const GetNotificationDetails = async (req, res) => {
   try {
-    console.log('Getting notification details');
-    console.log(req.params.id);
     const notification = await NotificationSchema.findById(req.params.id);
-    if (!notification) return res.status(404).json({ message: "Notification not found" });
-    res.json(notification);
+    if (!notification)
+      return res.json({ message: "Notification not found", status: 404 });
+
+    res.json({
+      data: notification,
+      message: "Notification Details For All Authenticated Users",
+      status: 200,
+    });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.json({ message: err.message, status: 500 });
   }
 };
 
@@ -81,10 +95,22 @@ const UpdateNotificationStatus = async (req, res) => {
       { read: true },
       { new: true }
     );
-    if (!notification) return res.status(404).json({ message: "Notification not found" });
-    res.json(notification);
+    if (!notification)
+      return res.json({ message: "Notification not found", status: 404 });
+
+    res.json({
+      data: notification,
+      message: `Notification Details For Specific Notification Id : ${req.params.id}`,
+      status: 200,
+    });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message, status: 500 });
   }
 };
-module.exports = { CreateNotification,NotifyOnlineUser,GetAllNotification, GetNotificationDetails , UpdateNotificationStatus};
+module.exports = {
+  CreateNotification,
+  NotifyOnlineUser,
+  GetAllNotification,
+  GetNotificationDetails,
+  UpdateNotificationStatus,
+};

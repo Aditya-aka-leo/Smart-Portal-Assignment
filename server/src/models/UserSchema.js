@@ -3,11 +3,6 @@ const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
 
 const Users = mongoose_user.Schema({
-  user_id: {
-    type: Number,
-    required: true,
-    unique: true,
-  },
   username: {
     type: String,
     required: true,
@@ -28,7 +23,6 @@ Users.pre("save", function (next) {
   const user = this;
 
   if (!user.isModified("password")) return next();
-
   bcryptjs.genSalt(saltRounds, function (err, salt) {
     if (err) return next(err);
 
