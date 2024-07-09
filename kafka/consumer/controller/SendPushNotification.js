@@ -16,7 +16,7 @@ const SendPushNotification = async (msg) => {
         'Content-Type': 'application/json'
       }
     });
-    console.log(`Notification sent to user ${user_id}: ${message}`);
+    // console.log(`Notification sent to user ${user_id}: ${message}`);
 
 
 
