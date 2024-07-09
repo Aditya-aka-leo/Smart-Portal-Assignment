@@ -13,8 +13,10 @@ const ReplayDb = mongoose_user.Schema({
     type: Boolean,
     default: false,
   },
-  retries : Number,
-  default : 3
+  retries : {
+    type: Number,
+    default : 3
+  }
 });
 
 module.exports = mongoose_user.model("ReplayDb",ReplayDb );
