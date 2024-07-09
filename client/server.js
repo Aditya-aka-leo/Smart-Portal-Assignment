@@ -5,7 +5,7 @@ const axios = require('axios');
 
 const app = express();
 const port = 3000;
-const host = '13.235.241.174';
+const host = '20.244.93.34';
 
 app.use(express.static('public'));
 

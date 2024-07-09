@@ -14,7 +14,7 @@
     let socket;
 
     const connectWebSocket = (userId) => {
-      socket = new WebSocket(`ws://13.235.241.174:3000?userId=${userId}`);
+      socket = new WebSocket(`ws://20.244.93.34:3000?userId=${userId}`);
 
       socket.onopen = () => {
         document.getElementById('status').innerText = 'WebSocket connection established';
