@@ -102,5 +102,3 @@
 - Swagger API documentation.
 - Replay system using MongoDB cron worker and Kafka.
 
-### Swagger Documentation
-=======
