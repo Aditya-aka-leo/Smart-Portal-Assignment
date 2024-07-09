@@ -75,7 +75,7 @@
 
 1. **Clone this repository**.
 2. **Install Docker Desktop**.
-3. **Add .env file and add MONGO_API_KEY_USERS = ""**.
+3. **Add .env file and add MONGO_API_KEY_USERS**
 4. **Run `docker-compose up --build`** in the root directory of the project. This process takes a minute or two to complete for the first time.
 5. You might have to stop the containers and run the command again because the Kafka containers sometimes take some time to create superusers upon the first-time container start, causing the consumer to fail.
 6. The Web UI will be available at `http://20.244.93.34:8081/api-docs/`.
