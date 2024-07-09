@@ -2,7 +2,6 @@ const { produceMessage } = require("../utils/producer");
 
 const SendPushNotification = async (msg) => {
   try{ 
-    dsdff
     console.log("trying to send push notification");
   }catch(err){
      try {
