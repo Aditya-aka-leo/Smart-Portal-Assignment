@@ -18,10 +18,9 @@ app.get("*", (req, res) => {
 });
 
 const PORT = 8081;
-const HOST = "20.244.93.34";
 
 app.listen(PORT, HOST, () => {
-  console.log(`App started on ${HOST}:${PORT}`);
+  console.log(`App started on :${PORT}`);
 
   require("./src/utils/mongo/MongoClient").connectDB();
 

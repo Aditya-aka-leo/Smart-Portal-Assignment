@@ -5,7 +5,6 @@ const axios = require('axios');
 
 const app = express();
 const port = 3000;
-const host = '20.244.93.34';
 
 app.use(express.static('public'));
 
@@ -30,8 +29,8 @@ wss.on('connection', (ws, request) => {
   });
 });
 
-server.listen(port, host, () => {
-  console.log(`Server running at http://${host}:${port}`);
+server.listen(port, () => {
+  console.log(`Server running at http://:${port}`);
 });
 
 const notifySystem = async (user_id, status) => {
@@ -41,7 +40,7 @@ const notifySystem = async (user_id, status) => {
       status: status,
     };
 
-    await axios.post(`http://${host}:8081/notifyOnlineUser`, payload, {
+    await axios.post(`http://20.244.93.34:8081/notifyOnlineUser`, payload, {
       headers: {
         'Content-Type': 'application/json'
       }
