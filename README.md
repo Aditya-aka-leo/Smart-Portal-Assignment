@@ -1,5 +1,5 @@
 
-<h1 align="center">Node.js Backend Engineer Assignment 🧭</h1>
+<h1 align="center">Node.js Backend Engineer Assignment 🧭 From Smart Portal</h1>
 
 ## 📚 | Problem Statement
 
@@ -76,7 +76,8 @@
 2. **Install Docker Desktop**.
 3. **Run `docker-compose up --build`** in the root directory of the project. This process takes a minute or two to complete for the first time.
 4. You might have to stop the containers and run the command again because the Kafka containers sometimes take some time to create superusers upon the first-time container start, causing the consumer to fail.
-5. The Web UI will be available at `http://localhost:3000/static/index.html`.
+5. The Web UI will be available at `http://20.244.93.34:8081/api-docs/`.
+6. The Client For Online Offline Status UI will be available at `http://20.244.93.34:3000`.
 
 ### Note
 
@@ -85,7 +86,7 @@
 ### System Design
 
 <p align="center">
-    <img alt="System Design" src="https://raw.githubusercontent.com/muKaustav/dyte_log_server/main/assets/system_des.png" target="_blank" />
+    <img alt="System Design" src="https://cdn.discordapp.com/attachments/808766340373807124/1260216258826207232/Untitled_-_Frame_1.jpg?ex=668e8359&is=668d31d9&hm=d0c29f31ff55e81fed4bcb316218faf530e56e1a10e973b4917a964745d6be19&" target="_blank" />
 </p>
 
 ### Features Implemented
