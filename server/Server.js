@@ -10,6 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/", main_route);
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 app.get("*", (req, res) => {
