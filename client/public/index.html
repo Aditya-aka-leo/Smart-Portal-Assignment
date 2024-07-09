@@ -57,7 +57,7 @@
             const button = document.createElement("button");
             button.innerText = "Acknowledge";
             button.onclick = () => {
-              fetch(`http://20.244.93.34:8081/register/${data._id}`, { // Use the _id field in the PUT request
+              fetch(`http://20.244.93.34:8081/notifications/${data._id}`, { // Use the _id field in the PUT request
                 method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json'
