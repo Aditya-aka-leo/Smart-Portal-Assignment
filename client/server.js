@@ -35,6 +35,7 @@ wss.on('connection', (ws, request) => {
     console.error(`WebSocket error for user ${user_id}:`, error);
   });
 });
+
 const notifySystem = async (user_id, status) => {
   try {
     const payload = {
@@ -54,22 +55,32 @@ const notifySystem = async (user_id, status) => {
   }
 };
 
-const sendNotification = (user_id, message) => {
+// Function to send notification to the client
+const sendNotification = (user_id, notification) => {
   const client = clients.get(user_id);
   if (client && client.readyState === WebSocket.OPEN) {
-    client.send(message);
+    client.send(JSON.stringify(notification)); // Send JSON stringified notification
   }
 };
 
-
+// API to send a notification
 app.post('/sendNotification', express.json(), (req, res) => {
-  const { user_id, message } = req.body;
-  sendNotification(user_id, message);
+  const { user_id, message, _id } = req.body;
+  if (!user_id || !message || !_id) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  // Construct notification object
+  const notification = {
+    user_id,
+    message,
+    _id
+  };
+
+  sendNotification(user_id, notification);
   res.sendStatus(200);
 });
 
-
 server.listen(port, () => {
   console.log(`Server running at http://:${port}`);
-});  
-
+});
