@@ -4,7 +4,7 @@ const axios = require('axios');
 const SendPushNotification = async (msg) => {
   try{ 
     console.log("trying to send push notification");
-
+    console.log(msg);
     data = {
       _id : msg._id,
       user_id: msg.user_id,
