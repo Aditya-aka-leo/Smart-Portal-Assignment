@@ -34,7 +34,7 @@ wss.on('connection', (ws, request) => {
 });
 
 server.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://13.235.241.174:${port}`);
 });
 
 
@@ -47,7 +47,7 @@ const notifySystem = async (user_id, status) => {
     };
 
     // Send the POST request
-    await axios.post('http://localhost:8081/notifyOnlineUser', payload, {
+    await axios.post('http://13.235.241.174:8081/notifyOnlineUser', payload, {
       headers: {
         'Content-Type': 'application/json'
       }
