@@ -6,7 +6,8 @@
 - Develop a microservices-based real-time notification system.
 - Handle high-volume message processing and deliver real-time notifications to users.
 - Integrate message queues and implement real-time data streaming.
-- The system should run on port `3000` by default.
+- The swagger  should run on  `http://20.244.93.34:8081/api-docs/` by default.
+- The Client Status Update should run on `http://20.244.93.34:3000` by default.
 
 ### Requirements
 
