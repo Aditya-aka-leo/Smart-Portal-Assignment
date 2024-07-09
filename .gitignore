@@ -1,0 +1,11 @@
+/client/node_modules
+
+/server/node_modules
+
+/.env
+
+/kafka/admin/node_modules
+
+/kafka/consumer/node_modules
+
+/kafka/producer/node_modules
