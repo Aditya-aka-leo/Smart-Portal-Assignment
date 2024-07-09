@@ -16,7 +16,7 @@ const CreateNotification = async (req, res) => {
     });
     if (flag === true) {
       try {
-        await produceMessage("Push-Notification", req.body);
+        await produceMessage("Push-Notification", NewNotification);
         return res.json({
           data: NewNotification,
           message: "Pushed Into Push Notification Queue Successfully",
