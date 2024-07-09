@@ -1,12 +1,12 @@
 
-<h1 align="center"> Startportal Node.js Backend Engineer Assignment 🧭 </h1>
+<h1 align="center"> StarPortal Node.js Backend Engineer Assignment 🧭 </h1>
 
 ## 📚 | Problem Statement
 
 - Develop a microservices-based real-time notification system.
 - Handle high-volume message processing and deliver real-time notifications to users.
 - Integrate message queues and implement real-time data streaming.
-- The swagger  should run on  [`Swaggaer Api` ](http://20.244.93.34:8081/api-docs/) by default.
+- The swagger  should run on  [`Swagger Api` ](http://20.244.93.34:8081/api-docs/) by default.
 - The Client Status Update should run on [`Client Status Updater`](http://20.244.93.34:3000) by default.
 
 ### Requirements
