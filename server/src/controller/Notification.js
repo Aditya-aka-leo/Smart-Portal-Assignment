@@ -12,7 +12,7 @@ const CreateNotification = async (req, res) => {
     const NewNotification = await NotificationSchema.create({
       user_id: req.body.user_id,
       message: req.body.message,
-      read: flag,
+      read: false,
     });
     if (flag === true) {
       try {
