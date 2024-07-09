@@ -26,7 +26,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               type: string
+ *               type: json
  *               example: "Pushed Into Push Notification Queue Successfully"
  *       500:
  *         description: Internal Server Error
@@ -98,7 +98,7 @@
  *         name: id
  *         required: true
  *         schema:
- *           type: string
+ *           type: json
  *     responses:
  *       200:
  *         description: Notification details

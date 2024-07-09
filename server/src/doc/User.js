@@ -11,12 +11,10 @@
  *           schema:
  *             type: object
  *             required:
- *        
  *               - username
  *               - email
  *               - password
  *             properties:
- *            
  *               username:
  *                 type: string
  *               email:
@@ -32,7 +30,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               type: string
+ *               type: json
  *               example: "The New User Is Created Successfully"
  *       500:
  *         description: Internal Server Error
@@ -42,7 +40,7 @@
  *               type: object
  *               properties:
  *                 error:
- *                   type: string
+ *                   type: json
  *                   example: "Internal Server Error"
  */
 
@@ -59,10 +57,10 @@
  *           schema:
  *             type: object
  *             required:
- *               - username
+ *               - email
  *               - password
  *             properties:
- *               username:
+ *               email:
  *                 type: string
  *               password:
  *                 type: string
