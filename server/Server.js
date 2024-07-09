@@ -19,7 +19,7 @@ app.get("*", (req, res) => {
 
 const PORT = 8081;
 
-app.listen(PORT, HOST, () => {
+app.listen(PORT , () => {
   console.log(`App started on :${PORT}`);
 
   require("./src/utils/mongo/MongoClient").connectDB();
