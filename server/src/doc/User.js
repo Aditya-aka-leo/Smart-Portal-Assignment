@@ -11,13 +11,12 @@
  *           schema:
  *             type: object
  *             required:
- *               - user_id
+ *        
  *               - username
  *               - email
  *               - password
  *             properties:
- *               user_id:
- *                 type: integer
+ *            
  *               username:
  *                 type: string
  *               email:
