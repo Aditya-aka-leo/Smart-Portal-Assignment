@@ -1,12 +1,13 @@
 
-<h1 align="center">Node.js Backend Engineer Assignment 🧭 From Smart Portal</h1>
+<h1 align="center"> Startportal Node.js Backend Engineer Assignment 🧭 </h1>
 
 ## 📚 | Problem Statement
 
 - Develop a microservices-based real-time notification system.
 - Handle high-volume message processing and deliver real-time notifications to users.
 - Integrate message queues and implement real-time data streaming.
-- The system should run on port `3000` by default.
+- The swagger  should run on  [`Swaggaer Api` ](http://20.244.93.34:8081/api-docs/) by default.
+- The Client Status Update should run on [`Client Status Updater`](http://20.244.93.34:3000) by default.
 
 ### Requirements
 
@@ -74,10 +75,11 @@
 
 1. **Clone this repository**.
 2. **Install Docker Desktop**.
-3. **Run `docker-compose up --build`** in the root directory of the project. This process takes a minute or two to complete for the first time.
-4. You might have to stop the containers and run the command again because the Kafka containers sometimes take some time to create superusers upon the first-time container start, causing the consumer to fail.
-5. The Web UI will be available at `http://20.244.93.34:8081/api-docs/`.
-6. The Client For Online Offline Status UI will be available at `http://20.244.93.34:3000`.
+3. **Add .env file and add MONGO_API_KEY_USERS**
+4. **Run `docker-compose up --build`** in the root directory of the project. This process takes a minute or two to complete for the first time.
+5. You might have to stop the containers and run the command again because the Kafka containers sometimes take some time to create superusers upon the first-time container start, causing the consumer to fail.
+6. The Web UI will be available at `http://20.244.93.34:8081/api-docs/`.
+7. The Client For Online Offline Status UI will be available at `http://20.244.93.34:3000`.
 
 ### Note
 
@@ -102,5 +104,3 @@
 - Swagger API documentation.
 - Replay system using MongoDB cron worker and Kafka.
 
-### Swagger Documentation
-=======
